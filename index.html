@@ -61,8 +61,8 @@
       .programs, .why-us, .about-me { flex-direction:column; gap:20px; }
       .navbar { flex-direction:column; gap:15px; }
       .nav-links { display:flex; flex-wrap:wrap; justify-content:center; margin-top:10px; }
-      .logo-container img { height:40px; } /* smaller logo on mobile */
-      .logo-text { font-size:24px; } /* slightly smaller text */
+      .logo-container img { height:40px; }
+      .logo-text { font-size:24px; }
       .nav-links a { margin:10px; font-size:16px; }
     }
   </style>
@@ -177,10 +177,10 @@
     <p style="text-align:center; margin-bottom:20px;">
       Email us at <a href="mailto:rifatutorials@gmail.com" style="color:#ff4da6; font-weight:bold;">rifatutorials@gmail.com</a>
     </p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Message"></textarea>
+    <form class="contact-form" action="https://formspree.io/f/xlgozdvl" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
