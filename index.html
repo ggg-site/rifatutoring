@@ -13,7 +13,7 @@
     /* Navbar */
     .navbar {
       display:flex; justify-content:space-between; align-items:center;
-      padding:20px 50px; background:rgb(255, 255, 255);
+      padding:20px 50px; background:rgb(252, 198, 225);
       box-shadow:0 2px 5px rgba(0, 0, 0, 0.1);
       position:sticky; top:0; z-index:100;
       flex-wrap:wrap;
@@ -22,8 +22,12 @@
     .logo-container { display:flex; align-items:center; }
     .logo-container img { height:50px; margin-right:10px; transition: height 0.3s; }
     .logo-text { font-size:28px; font-weight:bold; color:#ff4da6; transition: color 0.3s; }
+
     .nav-links a { margin-left:25px; font-weight:500; color:#333; transition: color 0.3s; }
     .nav-links a:hover { color:#ff4da6; }
+
+    body.dark .nav-links a { color:#fff; }
+    body.dark .nav-links a:hover { color:#ff4da6; }
 
     /* Toggle Button */
     .toggle-btn {
@@ -75,12 +79,8 @@
     footer { background:#2c3e50; color:white; text-align:center; padding:30px 20px; }
 
     /* Dark Mode */
-    body.dark {
-      background:#121212;
-      color:#eee;
-    }
-    body.dark .navbar { background:#1e1e1e; }
-    body.dark .navbar .nav-links a,
+    body.dark { background:#121212; color:#eee; }
+    body.dark .navbar { background:#252525; }
     body.dark .logo-text { color:#fff; }
     body.dark .hero { background:#1a1a1a; }
     body.dark .hero h1, body.dark .hero p { color:#fff; }
@@ -240,7 +240,7 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 Rifa Tutoring. All rights reserved. V1.0.1
+    &copy; 2026 Rifa Tutoring. All rights reserved. V1.0.2
   </footer>
 
 <script>
@@ -256,7 +256,6 @@ function toggleMode() {
   }
 }
 
-// Load mode from localStorage
 const btn = document.querySelector(".toggle-btn");
 if (localStorage.getItem("mode") === "dark") {
   document.body.classList.add("dark");
