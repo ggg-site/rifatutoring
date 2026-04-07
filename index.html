@@ -4,62 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rifa Tutoring</title>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ggg-site/rifatutoring/main/rifatutorial.png">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ggg-site/rifatutoring/refs/heads/main/rifatutorial.png">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+    body { font-family: Arial, sans-serif; line-height:1.6; color:#333; transition: background 0.3s, color 0.3s; }
     a { text-decoration:none; color:inherit; }
 
     /* Navbar */
     .navbar {
       display:flex; justify-content:space-between; align-items:center;
-      padding:20px 50px; background:white;
-      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      padding:20px 50px; background:rgb(255, 255, 255);
+      box-shadow:0 2px 5px rgba(0, 0, 0, 0.1);
       position:sticky; top:0; z-index:100;
       flex-wrap:wrap;
+      transition: background 0.3s;
     }
-    .logo-container {
-      display:flex;
-      align-items:center;
-    }
-    .logo-container img {
-      height:50px;
-      margin-right:10px;
-      transition: height 0.3s;
-    }
-    .logo-text { font-size:28px; font-weight:bold; color:#ff4da6; }
-
+    .logo-container { display:flex; align-items:center; }
+    .logo-container img { height:50px; margin-right:10px; transition: height 0.3s; }
+    .logo-text { font-size:28px; font-weight:bold; color:#ff4da6; transition: color 0.3s; }
     .nav-links a { margin-left:25px; font-weight:500; color:#333; transition: color 0.3s; }
     .nav-links a:hover { color:#ff4da6; }
 
+    /* Toggle Button */
+    .toggle-btn {
+      margin-left:20px;
+      padding:8px 15px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      background:#ff4da6;
+      color:white;
+      font-weight:bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
     /* Hero Section */
-    .hero { background:#f9f9f9; text-align:center; padding:100px 20px; }
-    .hero h1 { font-size:48px; margin-bottom:20px; color:#2c3e50; }
-    .hero p { font-size:20px; margin-bottom:30px; color:#555; }
-    .btn { display:inline-block; padding:15px 30px; margin:10px; background:#ff4da6; color:white; font-weight:bold; border-radius:6px; transition:0.3s; }
-    .btn:hover { background:#e33d92; }
+    .hero { background:#f9f9f9; text-align:center; padding:100px 20px; transition: background 0.3s; }
+    .hero h1 { font-size:48px; margin-bottom:20px; color:#000; transition: color 0.3s; }
+    .hero p { font-size:20px; margin-bottom:30px; color:#000; transition: color 0.3s; }
+
+    .btn { display:inline-block; padding:15px 30px; margin:10px; background:#ff4da6; color:white; font-weight:bold; border-radius:6px; transition: 0.3s; cursor:pointer; }
+    .btn:hover { 
+      background:white; 
+      color:#ff4da6; 
+      transform: scale(1.2); 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
 
     /* Sections */
     section { padding:80px 20px; max-width:1000px; margin:0 auto; }
-    section h2 { text-align:center; margin-bottom:40px; font-size:36px; color:#2c3e50; }
+    section h2 { text-align:center; margin-bottom:40px; font-size:36px; color:#000; transition: color 0.3s; }
 
-    .programs, .why-us, .about-me { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-    .card { flex:1 1 300px; background:white; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s; }
+    .programs, .why-us, .about-me, .extras { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
+    .card { flex:1 1 300px; background:white; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s, background 0.3s, color 0.3s; }
     .card:hover { transform:translateY(-5px); }
     .card h3 { margin-bottom:15px; font-size:24px; color:#ff4da6; }
-    .card p { color:#555; font-size:16px; }
+    .card p { color:#000; transition: color 0.3s; }
 
     /* Contact Section */
     .contact-form { max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
     .contact-form input, .contact-form textarea { padding:12px; border:1px solid #ccc; border-radius:6px; font-size:16px; width:100%; }
     .contact-form button { background:#ff4da6; color:white; border:none; padding:15px; font-size:18px; font-weight:bold; border-radius:6px; cursor:pointer; transition:0.3s; }
-    .contact-form button:hover { background:#e33d92; }
+    .contact-form button:hover { 
+      background:white; 
+      color:#ff4da6; 
+      transform: scale(1.1); 
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
 
     footer { background:#2c3e50; color:white; text-align:center; padding:30px 20px; }
 
+    /* Dark Mode */
+    body.dark {
+      background:#121212;
+      color:#eee;
+    }
+    body.dark .navbar { background:#1e1e1e; }
+    body.dark .navbar .nav-links a,
+    body.dark .logo-text { color:#fff; }
+    body.dark .hero { background:#1a1a1a; }
+    body.dark .hero h1, body.dark .hero p { color:#fff; }
+    body.dark section h2 { color:#fff; }
+    body.dark .card { background:#1e1e1e; color:#fff; }
+    body.dark .card p { color:#fff; }
+
     /* Responsive */
     @media (max-width:768px) {
-      .programs, .why-us, .about-me { flex-direction:column; gap:20px; }
+      .programs, .why-us, .about-me, .extras { flex-direction:column; gap:20px; }
       .navbar { flex-direction:column; gap:15px; }
       .nav-links { display:flex; flex-wrap:wrap; justify-content:center; margin-top:10px; }
       .logo-container img { height:40px; }
@@ -73,7 +104,7 @@
   <!-- Navbar -->
   <div class="navbar">
     <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/ggg-site/rifatutoring/main/rifatutorial.png" alt="Rifa Tutoring Logo">
+      <img src="https://raw.githubusercontent.com/ggg-site/rifatutoring/refs/heads/main/rifatutorial.png" alt="Rifa Tutoring Logo">
       <span class="logo-text">Rifa Tutoring</span>
     </div>
     <div class="nav-links">
@@ -83,6 +114,8 @@
       <a href="#about-me">About Me</a>
       <a href="#When n' Where">When and Where</a>
       <a href="#contact">Contact</a>
+      <a href="#extras">Extras</a>
+      <button class="toggle-btn" onclick="toggleMode()">🌙</button>
     </div>
   </div>
 
@@ -121,6 +154,25 @@
       <div class="card">
         <h3>Homework Helper</h3>
         <p>Tutor about homework and help your child improve their results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras Section -->
+  <section id="extras">
+    <h2>Extras</h2>
+    <div class="extras">
+      <div class="card">
+        <h3>e</h3>
+        <p>e</p>
+      </div>
+      <div class="card">
+        <h3>e</h3>
+        <p>e</p>
+      </div>
+      <div class="card">
+        <h3>e</h3>
+        <p>e</p>
       </div>
     </div>
   </section>
@@ -188,8 +240,31 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 Rifa Tutoring. All rights reserved.
+    &copy; 2026 Rifa Tutoring. All rights reserved. V1.0.1
   </footer>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("dark");
+  const btn = document.querySelector(".toggle-btn");
+  if(document.body.classList.contains("dark")){
+    localStorage.setItem("mode", "dark");
+    btn.textContent = "☀️"; // Sun emoji
+  } else {
+    localStorage.setItem("mode", "light");
+    btn.textContent = "🌙"; // Moon emoji
+  }
+}
+
+// Load mode from localStorage
+const btn = document.querySelector(".toggle-btn");
+if (localStorage.getItem("mode") === "dark") {
+  document.body.classList.add("dark");
+  btn.textContent = "☀️";
+} else {
+  btn.textContent = "🌙";
+}
+</script>
 
 </body>
 </html>
